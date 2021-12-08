@@ -21,3 +21,14 @@ Visual pleasing with graphs showing each generation and how they performe per tr
 * Diversity 4 bits ( max 15 )
 * Riskiness 6 bits ( max 63 )
 * Profit margin  6 bits ( max 63 )
+
+## Score
+* Money
+* Value of coins
+* Transaction fee
+* Tax
+
+## Crossover function
+
+## Mutation
+Flip random bits with possibility of 0.3ish
