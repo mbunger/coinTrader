@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart', 'line'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var jsonData = $.ajax({
+                url: "/bitcoin",
+                dataType: "json",
+                async: false
+            }).responseText;
+
+            var options = {
+                title: 'Bitcoin',
+                curveType: 'function',
+                legend: { position: 'bottom' },
+                series: {
+                    // Gives each series an axis name that matches the Y-axis below.
+                    0: { axis: 'Price' },
+                    1: { axis: 'Tweets' }
+                }
+            };
+
+            var chart = new google.charts.Line(document.getElementById('curve_chart'));
+            var data = new google.visualization.DataTable(jsonData);
+
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+</body>
+
+</html>
