@@ -21,9 +21,9 @@ const url = 'https://api.twitter.com/2/tweets/counts/recent?query=ronaldo&granul
 const options = {
     method: 'GET',
     mode: 'cors',
-    // headers: {
-    //     Authorization: `Bearer ${token}`
-    // }
+    headers: {
+         Authorization: `Bearer ${token}`
+    }
 };
 
 app.use(express.static('public'));
@@ -84,9 +84,8 @@ app.listen(port, () => {
 // const body = await response.text();
 // console.log(body);
 
-// fetch('http://httpbin.org/get', options).then((res) => {
-//     console.log(res);
-// });
+fetch(url, options).then(response => response.json())
+.then(data => console.log(data));
 
 // 
 // https.get('http://httpbin.org/get', options, (res) => {
